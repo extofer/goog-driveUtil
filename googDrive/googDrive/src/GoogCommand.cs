@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
@@ -15,8 +16,10 @@ namespace googDrive.Util
         {
             Arguments arguments = new Arguments(args);
 
-            const string clientID = "YOUR_CLIENT_ID";
-            const string clientSecret =  "YOUR_CLIENT_SECRET";
+            //const string clientID = "YOUR_CLIENT_ID";
+            //const string clientSecret =  "YOUR_CLIENT_SECRET";
+            string clientID = ConfigurationManager.AppSettings["clientID"];
+            string clientSecret = ConfigurationManager.AppSettings["clientSecret"];
 
             // Register the authenticator and create the service
             var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, clientID, clientSecret);
@@ -47,22 +50,16 @@ namespace googDrive.Util
                 Console.WriteLine("Writting URL Shortcut to Desktop");
                 Console.WriteLine(uri);
 
-                string deskDir = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
-                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(deskDir + "\\" + mkdir + ".url"))
+                using (System.IO.StreamWriter streamWriter = new System.IO.StreamWriter(path + "\\" + mkdir + ".url"))
                 {
-                    writer.WriteLine("[InternetShortcut]");
-                    writer.WriteLine(uri);
-                    writer.Flush();
+                    streamWriter.WriteLine("[InternetShortcut]");
+                    streamWriter.WriteLine(uri);
+                    streamWriter.Flush();
                 }
 
-                //UrlShortcutToDesktop("test", uri);
-
             }
-
-
-
-           
 
             Console.WriteLine("File id: " + file.Id);
             Console.WriteLine("Press Enter to end this process.");
