@@ -16,3 +16,6 @@ C:\Users\gvilla\Documents\Dev-Sandbox\googDrive\googDrive\bin\Debug\goog.exe
 C:\Users\gvilla\Documents\Dev-Sandbox\googDrive\googDrive\bin\Debug\goog.pdb
 C:\Users\gvilla\Documents\Dev-Sandbox\googDrive\googDrive\obj\x86\Debug\goog.exe
 C:\Users\gvilla\Documents\Dev-Sandbox\googDrive\googDrive\obj\x86\Debug\goog.pdb
+C:\Users\gvilla\Documents\Dev-Sandbox\goog-driveUtil\googDrive\googDrive\bin\Debug\goog.exe.config
+C:\Users\gvilla\Documents\Dev-Sandbox\goog-driveUtil\googDrive\googDrive\obj\x86\Debug\goog.exe
+C:\Users\gvilla\Documents\Dev-Sandbox\goog-driveUtil\googDrive\googDrive\obj\x86\Debug\goog.pdb
