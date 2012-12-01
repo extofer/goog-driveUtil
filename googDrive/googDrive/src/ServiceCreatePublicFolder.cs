@@ -3,26 +3,35 @@ using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 
 
-namespace goog.DriveUtil
+namespace goog.driveUtil
 {
     internal class ServiceCreatePublicFolder : IServiceCreatePublicFolder
     {
+        private File _body;
+        private Permission _permission;
+
+        public ServiceCreatePublicFolder(File body, Permission permission)
+        {
+            _body = body;
+            _permission = permission;
+        }
+
         public File Mkdir(DriveService service, String folderName)
         {
-            File body = new File();
-            Permission permission = new Permission();
+            //_body = new File();
+            //_permission = new Permission();
 
 
-            body.Title = folderName;
-            body.MimeType = "application/vnd.google-apps.folder";
+            _body.Title = folderName;
+            _body.MimeType = "application/vnd.google-apps.folder";
 
-            File file = service.Files.Insert(body).Fetch();
+            File file = service.Files.Insert(_body).Fetch();
 
-            permission.Value = "";
-            permission.Type = "anyone";
-            permission.Role = "reader";
+            _permission.Value = "";
+            _permission.Type = "anyone";
+            _permission.Role = "reader";
 
-            service.Permissions.Insert(permission, file.Id).Fetch();
+            service.Permissions.Insert(_permission, file.Id).Fetch();
 
             return file;
         }

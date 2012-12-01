@@ -5,8 +5,7 @@ using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Util;
 
-
-namespace goog.DriveUtil
+namespace goog.driveUtil
 {
     public class UtilAuthorization
     {
@@ -14,7 +13,8 @@ namespace goog.DriveUtil
         {
             // Get the auth URL:
             IAuthorizationState state =
-                new AuthorizationState(scopes: new[] {DriveService.Scopes.Drive.GetStringValue()});
+                new AuthorizationState(new[] {DriveService.Scopes.Drive.GetStringValue()});
+
             state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);
             Uri authUri = arg.RequestUserAuthorization(state);
 

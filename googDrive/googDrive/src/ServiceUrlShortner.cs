@@ -2,15 +2,22 @@
 using Google.Apis.Urlshortener.v1;
 using Google.Apis.Urlshortener.v1.Data;
 
-namespace goog.DriveUtil
+namespace goog.driveUtil
 {
-    public class ServiceUrlShortner
+    public class ServiceUrlShortner : IServiceUrlShortner
     {
+        private UrlshortenerService _urlshortenerService;
+
+        public ServiceUrlShortner(UrlshortenerService urlshortenerService)
+        {
+            _urlshortenerService = urlshortenerService;
+        }
+
         public string Shorten(string url)
         {
             try
             {
-                var service = new UrlshortenerService();
+                var service = _urlshortenerService;
 
                 string urlToShorten = url;
 
